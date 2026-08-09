@@ -39,6 +39,4 @@ app.use('/contact', contactRoutes);
 app.use('/password', passwordRoutes);
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;
