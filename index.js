@@ -10,11 +10,9 @@ const profileRoutes = require('./Routes/profileRoutes');
 const skillsRoutes = require('./Routes/skillRoutes');
 const passwordRoutes = require('./Routes/passwordRoutes');
 const contactRoutes = require('./Routes/contactRoutes');
-// const bodyParser = require('body-parser');
-// const { createProxyMiddleware } = require('http-proxy-middleware');
+
 
 const app = express();
-const PORT = Number(process.env.PORT) || 3000;
 
 const mongodbUrl = process.env['mongodb_url'];
 mongoose.connect(mongodbUrl);
@@ -39,6 +37,4 @@ app.use('/contact', contactRoutes);
 app.use('/password', passwordRoutes);
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;
