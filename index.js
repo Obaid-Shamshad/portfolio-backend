@@ -20,7 +20,7 @@ const mongodbUrl = process.env['mongodb_url'];
 mongoose.connect(mongodbUrl);
 
 app.use(cors({ 
-    origin: 'http://localhost:5173',
+    origin: 'https://portfolio-frontend-three-sand.vercel.app',
     credentials: true,
     methods: ['GET', 'POST', "PUT", "DELETE"],
 }))
@@ -39,4 +39,6 @@ app.use('/contact', contactRoutes);
 app.use('/password', passwordRoutes);
 
 
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
