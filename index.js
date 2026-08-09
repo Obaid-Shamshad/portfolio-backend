@@ -27,12 +27,16 @@ app.use(cors({
 app.use(express.json())
 app.use(cookieParser());
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
 app.use('/auth', userRoutes);
 app.use('/project', projectRoutes);
 app.use('/profile', profileRoutes);
 app.use('/skill', skillsRoutes);
 app.use('/contact', contactRoutes);
-app.use('/', passwordRoutes);
+app.use('/password', passwordRoutes);
 
 
 app.listen(PORT, () => {
