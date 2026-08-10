@@ -14,25 +14,20 @@ const loginUser = async (req, res) => {
         if (!isMatch) {
             return res.json({success: false, message: 'Invalid password' });
         }
-        const token = jwt.sign({ id: user._id }, "access-token-secret-key", { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id }, "access-token-secret-key", { expiresIn: '10m' });
         res.cookie('accessToken', token, {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
-            maxAge: 60 * 60 * 1000,
-        });
-        const refreshToken = jwt.sign({ id: user._id }, "refresh-token-secret-key", { expiresIn: '7d' });
+            maxAge: 10 * 60 * 1000,
+        });h
+        const refreshToken = jwt.sign({ id: user._id }, "refresh-token-secret-key", { expiresIn: '5h' });
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            maxAge: 5 * 60 * 60 * 1000,
         });
-        res.cookie('accessToken', token,
-             { 
-                httpOnly: true,
-                maxAge: 60 * 60 * 1000, // 1 hour in milliseconds 
-              });
       res.json({success: true, message: 'Login successful', userId: user._id });
     } catch (error) {
         res.json({status: "error", message: 'Server error' });
