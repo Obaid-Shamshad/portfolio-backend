@@ -35,8 +35,16 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
-    res.clearCookie('accessToken');
-    res.clearCookie('refreshToken');
+    res.clearCookie('accessToken', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+    });
+    res.clearCookie('refreshToken', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+    });
     res.json({success: true, message: 'User logged out successfully' });
 }
 
