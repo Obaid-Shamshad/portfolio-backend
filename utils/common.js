@@ -13,7 +13,7 @@ const newToken = (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: "none",
-            maxAge: 10 * 60 * 1000, // 2 minutes in milliseconds
+            maxAge: 10 * 60 * 1000,
         });
         exist = true;
     }

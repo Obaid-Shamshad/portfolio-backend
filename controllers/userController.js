@@ -15,6 +15,12 @@ const loginUser = async (req, res) => {
             return res.json({success: false, message: 'Invalid password' });
         }
         const token = jwt.sign({ id: user._id }, "access-token-secret-key", { expiresIn: '1h' });
+        res.cookie('accessToken', token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+            maxAge: 60 * 60 * 1000,
+        });
         const refreshToken = jwt.sign({ id: user._id }, "refresh-token-secret-key", { expiresIn: '7d' });
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
