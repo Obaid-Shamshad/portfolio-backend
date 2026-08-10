@@ -88,7 +88,7 @@ const getProjects = async (req, res) => {
         const projects = await projectModel.find();
         res.json({ success: true, projects });
     } catch (error) {
-        res.json({ status: "error", message: 'Server error' });
+        res.json({ status: "error", message: error.message });
     }
 };
 

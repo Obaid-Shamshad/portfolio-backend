@@ -10,6 +10,9 @@ const newToken = (req, res) => {
         req.user = decoded;
         const accessToken = jwt.sign({ id: decoded.id }, "access-token-secret-key", { expiresIn: "10m" });
         res.cookie("accessToken", accessToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
             maxAge: 10 * 60 * 1000, // 2 minutes in milliseconds
         });
         exist = true;
