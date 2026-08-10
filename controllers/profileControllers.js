@@ -1,4 +1,4 @@
-const profileModel = require('../Models/profileModel');
+const profileModel = require('../models/profileModel');
 const cloudinary = require('cloudinary').v2;
 
 cloudinary.config({

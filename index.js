@@ -16,7 +16,6 @@ const app = express();
 
 const mongodbUrl = process.env['mongodb_url'];
 mongoose.connect(mongodbUrl);
-
 app.use(cors({ 
     origin: 'https://portfolio-frontend-three-sand.vercel.app',
     credentials: true,
